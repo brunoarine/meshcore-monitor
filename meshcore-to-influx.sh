@@ -45,3 +45,5 @@ meshcore-cli -j -q -s "$PORT" req_telemetry "$NODE" |
     .lpp[] |
     "meshcore_telemetry,node=\($n),channel=\(.channel),type=\(.type) value=\(.value)"
   ' | while IFS= read -r line; do post "$line"; done
+
+sleep 5
