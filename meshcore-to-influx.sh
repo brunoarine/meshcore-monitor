@@ -36,6 +36,9 @@ meshcore-cli -j -q -s "$PORT" req_status "$NODE" |
     "full_evts=\(.full_evts)i"
   ' | while IFS= read -r line; do post "$line"; done
 
+# Sleep a while to give the frequency some time for in between messages to arrive
+sleep 5
+
 # Telemetry (one line per LPP channel/type)
 meshcore-cli -j -q -s "$PORT" req_telemetry "$NODE" |
   jq -r --arg n "$NODE" '
